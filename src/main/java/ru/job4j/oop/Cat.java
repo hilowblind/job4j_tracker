@@ -7,6 +7,11 @@ public class Cat {
 
     public String food;
 
+    public String sound() {
+        String voice = "may-may";
+        return voice;
+    }
+
     public void giveNick(String nick) {
         this.name = nick;
     }
@@ -31,5 +36,7 @@ public class Cat {
         black.giveNick("Black");
         black.eat("fish");
         black.show();
+        String say = gav.sound();
+        System.out.println("Peppy says: " + say);
     }
 }
