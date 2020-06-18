@@ -1,8 +1,8 @@
 package ru.job4j.oop;
 
 public class Item {
-    String id;
-    String name;
+    private String id;
+    private String name;
 
     public Item() {
     }
