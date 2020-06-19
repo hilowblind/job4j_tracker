@@ -18,7 +18,6 @@ public class Shop {
             }
         }
 
-        System.out.println(System.lineSeparator() + "After deleting and using the method:");
         Product.deleteAndMoveToLeft(products, 1);
 
         System.out.println("After using the method:");
