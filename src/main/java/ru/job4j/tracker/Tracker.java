@@ -18,23 +18,16 @@ public class Tracker {
     }
 
     public Item[] findAll() {
-        System.out.println("All items in the tracker:");
-        for (int i = 0; i < size; i++) {
-            Item item = items[i];
-            System.out.println("id = " + item.getId() + ", name = " + item.getName());
-        }
         return Arrays.copyOf(items, size);
     }
 
     public Item[] findByName(String key) {
         int sizeKeysArray = 0;
         Item[] itemWithKey = new Item[size];
-        System.out.println("Name's search completed:");
         for (int index = 0; index < size; index++) {
             Item item = items[index];
             if (item.getName().equals(key)) {
                 itemWithKey[sizeKeysArray] = item;
-                System.out.println("id = " + item.getId() + ", name = " + item.getName());
                 sizeKeysArray++;
             }
         }
