@@ -47,15 +47,23 @@ public class StartUI {
                 System.out.println("Enter an id");
                 int id = Integer.valueOf(scanner.nextLine());
                 Item item = tracker.findById(id);
-                System.out.println("Id: " + id + ", name: " + item.getName());
+                if (item != null) {
+                    System.out.println("Id: " + id + ", name: " + item.getName());
+                } else {
+                    System.out.println("Item not found");
+                }
             } else if (select == 5) {
                 System.out.println("=== Find an items by name ====");
                 System.out.println("Enter a name:");
                 String name = scanner.nextLine();
                 Item[] items = tracker.findByName(name);
-                System.out.println("Found with name " + name + " next ids:");
-                for (Item i: items) {
-                    System.out.println(i);
+                if (items.length != 0) {
+                    System.out.println("Found with name " + name + " next ids:");
+                    for (Item i : items) {
+                        System.out.println("Id: " + i.getId() + ", name: " + i.getName());
+                    }
+                } else {
+                    System.out.println("Items not found");
                 }
             } else if (select == 6) {
                 run = false;
