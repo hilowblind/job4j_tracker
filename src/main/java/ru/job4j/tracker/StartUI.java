@@ -65,18 +65,13 @@ public class StartUI {
         }
     }
 
-    public void init(Input input, Tracker tracker) {
+    public void init(Input input, Tracker tracker, UserAction[] actions) {
         boolean run = true;
         while (run) {
             this.showMenu();
-            int select = Integer.valueOf(input.askStr("Enter operation's number: "));
-            if (select == 0) {StartUI.createItem(input, tracker);
-            } else if (select == 1) {StartUI.showItems(tracker);
-            } else if (select == 2) {StartUI.replaceItem(input, tracker);
-            } else if(select == 3) {StartUI.deleteItem(input, tracker);
-            } else if (select == 4) {StartUI.findItemById(input, tracker);
-            } else if (select == 5) {StartUI.findItemByName(input, tracker);
-            } else if (select == 6) { run = false;}
+            int select = input.askInt("Select: ");
+            UserAction action = actions[select];
+            run = action.execute(input, tracker);
         }
     }
 
@@ -96,6 +91,12 @@ public class StartUI {
     public static void main(String[] args) {
         Input input = new ConsoleInput();
         Tracker tracker = new Tracker();
-        new StartUI().init(input, tracker);
+        UserAction[] actions = {
+                new CreateAction(), new ShowAction(),
+                new ReplaceAction(), new DeleteAction(),
+                new FindItemByIdAction(), new FindItemByNameAction(),
+                new ExitAction()
+        };
+        new StartUI().init(input, tracker, actions);
     }
 }
