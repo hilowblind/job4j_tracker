@@ -3,7 +3,7 @@ package ru.job4j.tracker;
 public class ReplaceAction implements UserAction {
     @Override
     public String name() {
-        return "=== Replace an item ====";
+        return "Replace an item";
     }
 
     @Override
