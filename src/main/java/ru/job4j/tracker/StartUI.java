@@ -7,66 +7,66 @@ public class StartUI {
         this.out = out;
     }
 
-    public static void createItem(Input input, Tracker tracker) {
-        System.out.println("=== Create a new Item ====");
+    public void createItem(Input input, Tracker tracker) {
+        out.println("=== Create a new Item ====");
         String name = input.askStr("Enter name: ");
         Item item = new Item(name);
         tracker.add(item);
     }
 
-    public static void showItems(Tracker tracker) {
+    public void showItems(Tracker tracker) {
         Item[] item = tracker.findAll();
-        System.out.println("=== Show all items ====");
+        out.println("=== Show all items ====");
         for (Item i : item) {
-            System.out.println("Id: " + i.getId() + ", name: " + i.getName());
+            out.println("Id: " + i.getId() + ", name: " + i.getName());
         }
     }
 
-    public static void replaceItem(Input input, Tracker tracker) {
-        System.out.println("=== Replace an item ====");
+    public void replaceItem(Input input, Tracker tracker) {
+        out.println("=== Replace an item ====");
         int id = Integer.valueOf(input.askStr("Enter id, which you want to replace:"));
-        System.out.println("Enter new name:");
+        out.println("Enter new name:");
         String name = input.askStr("Enter new name:");
         Item item = new Item(name);
         if (tracker.replace(id, item)) {
-            System.out.println("Successfully, you replaced an item");
+            out.println("Successfully, you replaced an item");
         } else {
-            System.out.println("Error, you entered an incorrect id");
+            out.println("Error, you entered an incorrect id");
         }
     }
 
-    public static void findItemById(Input input, Tracker tracker) {
-        System.out.println("=== Find an item by id====");
+    public void findItemById(Input input, Tracker tracker) {
+        out.println("=== Find an item by id====");
         int id = Integer.valueOf(input.askStr("Enter an id"));
         Item item = tracker.findById(id);
         if (item != null) {
-            System.out.println("Id: " + id + ", name: " + item.getName());
+            out.println("Id: " + id + ", name: " + item.getName());
         } else {
-            System.out.println("Item not found");
+            out.println("Item not found");
         }
     }
 
-    public static void findItemByName(Input input, Tracker tracker) {
-        System.out.println("=== Find an items by name ====");
+    public void findItemByName(Input input, Tracker tracker) {
+        out.println("=== Find an items by name ====");
         String name = input.askStr("Enter a name:");
         Item[] items = tracker.findByName(name);
         if (items.length != 0) {
-            System.out.println("Found with name " + name + " next ids:");
+            out.println("Found with name " + name + " next ids:");
             for (Item i : items) {
-                System.out.println("Id: " + i.getId() + ", name: " + i.getName());
+                out.println("Id: " + i.getId() + ", name: " + i.getName());
             }
         } else {
-            System.out.println("Items not found");
+            out.println("Items not found");
         }
     }
 
-    public static void deleteItem(Input input, Tracker tracker) {
-        System.out.println("=== Delete an item ====");
+    public void deleteItem(Input input, Tracker tracker) {
+        out.println("=== Delete an item ====");
         int id = Integer.valueOf(input.askStr("Enter id, which you want to delete:"));
         if (tracker.delete(id)) {
-            System.out.println("Successfully, you deleted an item");
+            out.println("Successfully, you deleted an item");
         } else {
-            System.out.println("Error, you entered an incorrect id");
+            out.println("Error, you entered an incorrect id");
         }
     }
 
