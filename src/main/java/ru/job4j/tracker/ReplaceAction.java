@@ -15,13 +15,13 @@ public class ReplaceAction implements UserAction {
     @Override
     public boolean execute(Input input, Tracker tracker) {
         int id = Integer.valueOf(input.askStr("Enter id, which you want to replace:"));
-        System.out.println("Enter new name:");
+        out.println("Enter new name:");
         String name = input.askStr("Enter new name:");
         Item item = new Item(name);
         if (tracker.replace(id, item)) {
-            System.out.println("Successfully, you replaced an item");
+            out.println("Successfully, you replaced an item");
         } else {
-            System.out.println("Error, you entered an incorrect id");
+            out.println("Error, you entered an incorrect id");
         }
         return true;
     }
