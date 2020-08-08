@@ -68,7 +68,7 @@ public class StartUITest {
                 new ExitAction(out)
         };
         new StartUI(out).init(in, tracker, actions);
-        assertThat(tracker.findById(item.getId()).getId(), is("Founded item"));
+        assertThat(tracker.findById(item.getId()).getName(), is("Founded item"));
     }
 
     @Test
