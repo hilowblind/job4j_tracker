@@ -9,8 +9,9 @@ public class UserStore {
     public static User findUser(User[] users, String login) throws UserNotFoundException {
         int checkFound = -1;
         for (int i = 0; i < users.length; i++) {
-            if (users[i].getUsername() == login) {
+            if (users[i].getUsername().equals(login)) {
                 checkFound = i;
+                break;
             }
         }
         if (checkFound == -1) {
@@ -20,10 +21,10 @@ public class UserStore {
     }
 
     public static boolean validate(User user) throws UserInvalidException {
-        if (user.isValid() == false || user.getUsername().length() < 3) {
+        if (!user.isValid() || user.getUsername().length() < 3) {
             throw new UserInvalidException("User is not valid");
         }
-        return false;
+        return true;
     }
 
     public static void main(String[] args) {
